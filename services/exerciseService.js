@@ -1,7 +1,7 @@
-const fs = require('fs');
-const { json2xml, xml2json } = require('../utils/xmlUtils');
+const fs = require("fs");
+const { json2xml, xml2json } = require("../utils/xmlUtils");
 
-const dataFile = 'exercises.xml';
+const dataFile = "exercises.xml";
 
 // Initialize XML file if it doesn't exist
 if (!fs.existsSync(dataFile)) {
@@ -15,18 +15,18 @@ if (!fs.existsSync(dataFile)) {
 
 async function getAllExercises() {
     try {
-        const xml = fs.readFileSync(dataFile, 'utf8');
+        const xml = fs.readFileSync(dataFile, "utf8");
         const result = await xml2json(xml);
         return result.exercises.exercise || [];
     } catch (error) {
-        console.error('Error reading XML file:', error);
+        console.error("Error reading XML file:", error);
         throw error;
     }
 }
 
 async function getExerciseById(id) {
     const exercises = await getAllExercises();
-    return exercises.find(e => e.id === id);
+    return exercises.find((e) => e.id === id);
 }
 
 async function addExercise(exerciseData) {
@@ -42,7 +42,7 @@ async function addExercise(exerciseData) {
 
 async function updateExercise(id, updatedData) {
     const exercises = await getAllExercises();
-    const exerciseIndex = exercises.findIndex(e => e.id === id);
+    const exerciseIndex = exercises.findIndex((e) => e.id === id);
 
     if (exerciseIndex === -1) return null;
 
@@ -63,7 +63,7 @@ async function updateExercise(id, updatedData) {
 
 async function deleteExercise(id) {
     const exercises = await getAllExercises();
-    const exerciseIndex = exercises.findIndex(e => e.id === id);
+    const exerciseIndex = exercises.findIndex((e) => e.id === id);
 
     if (exerciseIndex === -1) return null;
 
@@ -77,7 +77,7 @@ function writeExercises(exercises) {
         const xmlData = json2xml({ exercises: { exercise: exercises } });
         fs.writeFileSync(dataFile, xmlData);
     } catch (error) {
-        console.error('Error writing XML file:', error);
+        console.error("Error writing XML file:", error);
         throw error;
     }
 }

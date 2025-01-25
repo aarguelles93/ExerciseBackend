@@ -1,4 +1,4 @@
-const xml2js = require('xml2js');
+const xml2js = require("xml2js");
 
 const builder = new xml2js.Builder({ headless: true });
 const parser = new xml2js.Parser({ explicitArray: false });
