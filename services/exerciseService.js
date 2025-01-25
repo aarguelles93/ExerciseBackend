@@ -35,15 +35,12 @@ async function getExerciseByDeviceAndId(deviceId, exerciseId) {
     const asd =  exercises.find(
         (e) => e['device-id'] === deviceId && e.id === exerciseId
     );
-    console.log(asd);
     return asd;
 }
 
 async function getExerciseByDevice(deviceId) {
     const exercises = await getAllExercises();
-    console.log(exercises);
     const asd =  exercises.filter((e) => e['device-id'] === deviceId);
-    console.log(asd);
     return asd;
 }
 
@@ -52,7 +49,11 @@ async function addExercise(exerciseData) {
     const newExercise = {
         id: Date.now().toString(),
         'device-id': exerciseData.deviceId,
-        ...exerciseData,
+        name: exerciseData.name,
+        sets: exerciseData.sets,
+        reps: exerciseData.reps,
+        weight: exerciseData.weight,
+        date: exerciseData.date,
     };
     exercises.push(newExercise);
     writeExercises(exercises);
