@@ -2,6 +2,7 @@ const express = require('express');
 const {
     getAllExercises,
     getExerciseById,
+    getExerciseByDeviceAndId,
     addExercise,
     updateExercise,
     deleteExercise,
@@ -50,6 +51,22 @@ app.post('/exercises', async (req, res) => {
         res.status(201).json(newExercise);
     } catch (error) {
         res.status(500).send('Error saving exercise');
+    }
+});
+
+app.get('/:deviceId/exercises/:id', async (req, res) => {
+    try {
+        const { deviceId, id } = req.params;
+        const exercise = await getExerciseByDeviceAndId(deviceId, id);
+
+        if (!exercise) {
+            return res.status(404).send('Exercise not found for this device');
+        }
+
+        res.json(exercise);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching exercise');
     }
 });
 

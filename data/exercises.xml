@@ -1,6 +1,7 @@
 <exercises>
   <exercise>
     <id>1</id>
+    <device-id>DEVICE-123</device-id>
     <name>Bench Press</name>
     <sets>4</sets>
     <reps>8</reps>
@@ -9,6 +10,7 @@
   </exercise>
   <exercise>
     <id>2</id>
+    <device-id>DEVICE-456</device-id>
     <name>Squats</name>
     <sets>5</sets>
     <reps>5</reps>
@@ -17,6 +19,7 @@
   </exercise>
   <exercise>
     <id>1737819485358</id>
+    <device-id>DEVICE-789</device-id>
     <name>Leg Curl</name>
     <sets>5</sets>
     <reps>15</reps>
