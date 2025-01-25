@@ -1,0 +1,26 @@
+<exercises>
+  <exercise>
+    <id>1</id>
+    <name>Bench Press</name>
+    <sets>4</sets>
+    <reps>8</reps>
+    <weight>185</weight>
+    <date>2023-09-20</date>
+  </exercise>
+  <exercise>
+    <id>2</id>
+    <name>Squats</name>
+    <sets>5</sets>
+    <reps>5</reps>
+    <weight>225</weight>
+    <date>2023-09-21</date>
+  </exercise>
+  <exercise>
+    <id>1737819485358</id>
+    <name>Leg Curl</name>
+    <sets>5</sets>
+    <reps>15</reps>
+    <weight>185</weight>
+    <date>2023-09-20</date>
+  </exercise>
+</exercises>
