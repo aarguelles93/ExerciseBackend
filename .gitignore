@@ -1,0 +1,17 @@
+node_modules/
+*.log
+*.tmp
+.env
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+.sublime-text/
+
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+.env
