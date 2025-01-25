@@ -1,5 +1,6 @@
 const path = require('path');
-const { json2xml, xml2json } = require("../utils/xmlUtils");
+const fs = require('fs');
+const { json2xml, xml2json } = require('../utils/xmlUtils');
 
 const dataFile = path.join(__dirname, '../data/exercises.xml');
 
@@ -15,11 +16,11 @@ if (!fs.existsSync(dataFile)) {
 
 async function getAllExercises() {
     try {
-        const xml = fs.readFileSync(dataFile, "utf8");
+        const xml = fs.readFileSync(dataFile, 'utf8');
         const result = await xml2json(xml);
         return result.exercises.exercise || [];
     } catch (error) {
-        console.error("Error reading XML file:", error);
+        console.error('Error reading XML file:', error);
         throw error;
     }
 }
@@ -77,7 +78,7 @@ function writeExercises(exercises) {
         const xmlData = json2xml({ exercises: { exercise: exercises } });
         fs.writeFileSync(dataFile, xmlData);
     } catch (error) {
-        console.error("Error writing XML file:", error);
+        console.error('Error writing XML file:', error);
         throw error;
     }
 }
