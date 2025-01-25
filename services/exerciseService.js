@@ -32,15 +32,26 @@ async function getExerciseById(id) {
 
 async function getExerciseByDeviceAndId(deviceId, exerciseId) {
     const exercises = await getAllExercises();
-    return exercises.find(
+    const asd =  exercises.find(
         (e) => e['device-id'] === deviceId && e.id === exerciseId
     );
+    console.log(asd);
+    return asd;
+}
+
+async function getExerciseByDevice(deviceId) {
+    const exercises = await getAllExercises();
+    console.log(exercises);
+    const asd =  exercises.filter((e) => e['device-id'] === deviceId);
+    console.log(asd);
+    return asd;
 }
 
 async function addExercise(exerciseData) {
     const exercises = await getAllExercises();
     const newExercise = {
         id: Date.now().toString(),
+        'device-id': exerciseData.deviceId,
         ...exerciseData,
     };
     exercises.push(newExercise);
@@ -95,6 +106,7 @@ module.exports = {
     getAllExercises,
     getExerciseById,
     getExerciseByDeviceAndId,
+    getExerciseByDevice,
     addExercise,
     updateExercise,
     deleteExercise,

@@ -3,6 +3,7 @@ const {
     getAllExercises,
     getExerciseById,
     getExerciseByDeviceAndId,
+    getExerciseByDevice,
     addExercise,
     updateExercise,
     deleteExercise,
@@ -33,32 +34,11 @@ app.get('/exercises/:id', async (req, res) => {
     }
 });
 
-app.post('/exercises', async (req, res) => {
-    const { name, sets, reps, weight, date } = req.body;
-
-    if (!name || !sets || !reps || !weight || !date) {
-        return res.status(400).send('Missing required fields');
-    }
-
-    try {
-        const newExercise = await addExercise({
-            name,
-            sets,
-            reps,
-            weight,
-            date,
-        });
-        res.status(201).json(newExercise);
-    } catch (error) {
-        res.status(500).send('Error saving exercise');
-    }
-});
-
 app.get('/:deviceId/exercises/:id', async (req, res) => {
     try {
         const { deviceId, id } = req.params;
         const exercise = await getExerciseByDeviceAndId(deviceId, id);
-
+        
         if (!exercise) {
             return res.status(404).send('Exercise not found for this device');
         }
@@ -67,6 +47,39 @@ app.get('/:deviceId/exercises/:id', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Error fetching exercise');
+    }
+});
+
+app.get('/:deviceId/exercises', async (req, res) => {
+    const { deviceId } = req.params;
+    try {
+        const exercises = await getExerciseByDevice(deviceId);
+        res.json(exercises);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching exercises');
+    }
+});
+
+app.post('/exercises', async (req, res) => {
+    const { name, 'device-id': deviceId, sets, reps, weight, date } = req.body;
+
+    if (!name || !deviceId || !sets || !reps || !weight || !date) {
+        return res.status(400).send('Missing required fields');
+    }
+
+    try {
+        const newExercise = await addExercise({
+            name,
+            deviceId,            
+            sets,
+            reps,
+            weight,
+            date,
+        });
+        res.status(201).json(newExercise);
+    } catch (error) {
+        res.status(500).send('Error saving exercise');
     }
 });
 

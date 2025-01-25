@@ -26,4 +26,32 @@
     <weight>185</weight>
     <date>2023-09-20</date>
   </exercise>
+  <exercise>
+    <id>1737844263639</id>
+    <name>Leg Curl</name>
+    <deviceId>sample-device</deviceId>
+    <sets>5</sets>
+    <reps>15</reps>
+    <weight>185</weight>
+    <date>2023-09-20</date>
+  </exercise>
+  <exercise>
+    <id>1737844303605</id>
+    <name>Leg Curl</name>
+    <deviceId>sample-device</deviceId>
+    <sets>5</sets>
+    <reps>15</reps>
+    <weight>185</weight>
+    <date>2023-09-20</date>
+  </exercise>
+  <exercise>
+    <id>1737844633424</id>
+    <device-id>sample-device</device-id>
+    <name>Leg Curl</name>
+    <deviceId>sample-device</deviceId>
+    <sets>5</sets>
+    <reps>15</reps>
+    <weight>185</weight>
+    <date>2023-09-20</date>
+  </exercise>
 </exercises>
