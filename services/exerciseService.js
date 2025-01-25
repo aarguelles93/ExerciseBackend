@@ -30,6 +30,13 @@ async function getExerciseById(id) {
     return exercises.find((e) => e.id === id);
 }
 
+async function getExerciseByDeviceAndId(deviceId, exerciseId) {
+    const exercises = await getAllExercises();
+    return exercises.find(
+        (e) => e['device-id'] === deviceId && e.id === exerciseId
+    );
+}
+
 async function addExercise(exerciseData) {
     const exercises = await getAllExercises();
     const newExercise = {
@@ -50,6 +57,7 @@ async function updateExercise(id, updatedData) {
     const existing = exercises[exerciseIndex];
     const updatedExercise = {
         id: existing.id,
+        'device-id': updatedData['device-id'] || existing['device-id'],
         name: updatedData.name || existing.name,
         sets: updatedData.sets || existing.sets,
         reps: updatedData.reps || existing.reps,
@@ -86,6 +94,7 @@ function writeExercises(exercises) {
 module.exports = {
     getAllExercises,
     getExerciseById,
+    getExerciseByDeviceAndId,
     addExercise,
     updateExercise,
     deleteExercise,
