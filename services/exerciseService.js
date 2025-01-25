@@ -1,7 +1,7 @@
-const fs = require("fs");
+const path = require('path');
 const { json2xml, xml2json } = require("../utils/xmlUtils");
 
-const dataFile = "exercises.xml";
+const dataFile = path.join(__dirname, '../data/exercises.xml');
 
 // Initialize XML file if it doesn't exist
 if (!fs.existsSync(dataFile)) {
